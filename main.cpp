@@ -109,24 +109,9 @@ TEST_CASE("List are completed")
     list.PopFront();
     REQUIRE(list.Size() == 3);
     list.Clear();
-    try
-    {
-        list.PopBack();
-    }
-    catch (std::runtime_error& ex)
-    {
-        std::string warning_text= ex.what();
-        REQUIRE(warning_text == "list is empty");
-    }
-    try
-    {
-        list.PopFront();
-    }
-    catch (std::runtime_error& ex)
-    {
-        std::string warning_text = ex.what();
-        REQUIRE(warning_text == "list is empty");
-    }
+    REQUIRE_THROWS(list.PopBack());
+    REQUIRE_THROWS(list.PopFront());
+    
     
 
 
